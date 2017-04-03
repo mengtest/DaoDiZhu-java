@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="off" monitorInterval="1800">
+	<Properties>
+		<Property name="log-path">/home/test/logs</Property>
+	</Properties>
+
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<Filters>
+				<ThresholdFilter level="debug" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%xEx%n" />
+		</Console>
+
+		<RollingFile name="consoleFileLog" fileName="${log-path}/console/consoleLog.log"
+			filePattern="${log-path}/console/console-%d{yyyy-MM-dd}.log">
+			<PatternLayout pattern="%-d{yyyy-MM-dd HH:mm:ss} [%thread] %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy modulate="true"
+					interval="1" />
+			</Policies>
+		</RollingFile>
+
+		<RollingFile name="commonlog" fileName="${log-path}/gamelog/commonlog.log"
+			filePattern="${log-path}/gamelog/common-%d{yyyy-MM-dd}.log" append="true">
+			<Filters>
+				<ThresholdFilter level="debug" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+			<PatternLayout
+				pattern="%d{yyyy-MM-dd HH:mm:ss z} %-5level %class{36} - %msg%xEx%n" />
+			<Policies>
+				<!-- 每天产生一个日志文件 -->
+				<TimeBasedTriggeringPolicy modulate="true"
+					interval="1" />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="create_room_log"
+			fileName="${log-path}/gamelog/create_room_log.log" filePattern="${log-path}/gamelog/create_room-%d{yyyy-MM-dd}.log"
+			append="true">
+			<Filters>
+				<ThresholdFilter level="info" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss } %-5level - %msg%xEx%n" />
+			<Policies>
+				<!-- 每天产生一个日志文件 -->
+				<TimeBasedTriggeringPolicy modulate="true"
+					interval="1" />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="RequestAndResponseLog"
+			fileName="${log-path}/gamelog/request_and_response_log.log"
+			filePattern="${log-path}/gamelog/request_and_response-%d{yyyy-MM-dd}.log"
+			append="true">
+			<Filters>
+				<ThresholdFilter level="debug" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss } %-5level - %msg%xEx%n" />
+			<Policies>
+				<!-- 每天产生一个日志文件 -->
+				<TimeBasedTriggeringPolicy modulate="true"
+					interval="1" />
+			</Policies>
+		</RollingFile>
+
+
+		<RollingFile name="diamondlog" fileName="${log-path}/gamelog/diamondlog.log"
+			filePattern="${log-path}/gamelog/diamond-%d{yyyy-MM-dd}.log" append="true">
+			<Filters>
+				<ThresholdFilter level="info" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss } %-5level - %msg%xEx%n" />
+			<Policies>
+				<!-- 每天产生一个日志文件 -->
+				<TimeBasedTriggeringPolicy modulate="true"
+					interval="1" />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="oneline" fileName="${log-path}/gamelog/oneline.log"
+			filePattern="${log-path}/gamelog/oneline-%d{yyyy-MM-dd}.log" append="true">
+			<Filters>
+				<ThresholdFilter level="info" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss } %-5level - %msg%xEx%n" />
+			<Policies>
+				<!-- 每天产生一个日志文件 -->
+				<TimeBasedTriggeringPolicy modulate="true"
+					interval="1" />
+			</Policies>
+		</RollingFile>
+
+		<RollingFile name="com.game.logic.room.RoomTimer" fileName="${log-path}/gamelog/roomTimer.log"
+		filePattern="${log-path}/gamelog/roomTimer-%d{yyyy-MM-dd}.log"
+			append="true">
+			<Filters>
+				<ThresholdFilter level="info" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss } %-5level - %msg%xEx%n" />
+			<Policies>
+				<!-- 每天产生一个日志文件 -->
+				<TimeBasedTriggeringPolicy modulate="true"
+					interval="1" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<!-- <logger name="net.vwvo.common.log.CommonConsoleLogReciever" level="info" 
+			additivity="false"> <appender-ref ref="console" /> </logger> -->
+
+		<logger name="RequestAndResponseLog" level="debug" additivity="false">
+			<appender-ref ref="RequestAndResponseLog" />
+			<appender-ref ref="console" />
+		</logger>
+		<logger name="create_room_log" level="info" additivity="false">
+			<appender-ref ref="create_room_log" />
+			<appender-ref ref="console" />
+		</logger>
+		<logger name="diamondlog" level="info" additivity="false">
+			<appender-ref ref="diamondlog" />
+			<appender-ref ref="console" />
+		</logger>
+		<logger name="oneline" level="info" additivity="false">
+			<appender-ref ref="oneline" />
+			<appender-ref ref="console" />
+		</logger>
+		<logger name="commonlog" level="debug" additivity="false">
+			<appender-ref ref="commonlog" />
+			<appender-ref ref="console" />
+		</logger>
+		<logger name="com.game.logic.room.RoomTimer" level="info"
+			additivity="false">
+			<appender-ref ref="com.game.logic.room.RoomTimer" />
+			<appender-ref ref="console" />
+		</logger>
+		<!-- 如果没有定义logger，使用这里默认的日志等级 -->
+		<root level="debug">
+			<appender-ref ref="console" />
+			<appender-ref ref="consoleFileLog" />
+		</root>
+	</Loggers>
+</configuration>

@@ -1,0 +1,11 @@
+option java_package = "com.auto.command.protos";
+option java_outer_classname = "ChatModuleProto";
+message ChatRequest{
+	required string content = 1;
+	
+}
+message ChatResponse{
+	required string content = 1;
+	optional int32 pos = 2;
+	
+}

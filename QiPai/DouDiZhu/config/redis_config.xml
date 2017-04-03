@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 此配置表为机密配置，任何人不得擅自泄露，否则后果自负 -->
+
+
+<!-- 参数说明： timeout：读取超时间时间; maxTotal：最大连接数; blockWhenExhausted : 连接耗尽时是否阻塞，false报异常，true，阻塞直到超时 
+	maxIdle : 最大空间连接数; maxWaitMillis : 获取连接时的最大等待毫秒数(如果设置为阻塞时BlockWhenExhausted),如果超时就抛异常, 
+	小于零:阻塞不确定的时间, 默认-1; minEvictableIdleTimeMillis : 逐出连接的最小空闲时间 默认1800000毫秒(30分钟) 
+	minIdle : 最小空闲连接数; timeBetweenEvictionRunsMillis:逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 
+	默认-1 virtualNodes:此连接的虚拟节点数，用于计算一致性哈稀 -->
+<RedisConfig id="10001" ip="139.196.15.213" port="6379" password="test" timeout="0" maxTotal="5" blockWhenExhausted="true"
+	maxIdle="30" maxWaitMillis="5000" minEvictableIdleTimeMillis="600000"
+	minIdle="1" timeBetweenEvictionRunsMillis="43200000" testWhileIdle="true"
+	testOnBorrow="true" />

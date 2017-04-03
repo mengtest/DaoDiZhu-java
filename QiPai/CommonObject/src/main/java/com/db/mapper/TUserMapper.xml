@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.db.mapper.TUserMapper">
+	<insert id="insertUser" parameterType="TUser"
+		flushCache="true">
+		INSERT INTO t_user (userId,uuid,tel,createTime,type,platformId,name) VALUES
+		(#{userId},#{uuid},#{tel},#{createTime},#{type},#{platformId},#{name})
+	</insert>
+	<update id="updateLoginTime" parameterType="TUser">
+		update t_user set lastLoginTime = #{lastLoginTime} where userId = #{userId}
+	</update>
+	
+	<select id="selectUserByUUId" parameterType="String" resultType="TUser">
+		select * from t_user where uuid = #{uuid}
+	</select>
+	
+	<update id= "updateUserType" parameterType="TUser">
+		update t_user set type = ${type} where userId = ${userId}
+	</update>
+</mapper>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NetworkConfig>
+	<port>8809</port>
+	<bossThreads>1</bossThreads>
+	<workThreads>2</workThreads>
+	<idleTime>15</idleTime>
+	<!-- //连接建立成功之后，等待登陆验证的时间，如果在这个时间内，用户只是建立连接而未登陆的话，连接将被断开，单位秒。 -->
+	<waiteLoginTime>5</waiteLoginTime>
+
+</NetworkConfig>

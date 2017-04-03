@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Protocol className="ChatModule" >
+	<bean name="Chat" id="1012" desc="聊天协议">
+		<request>
+			<var name="content" desc="聊天内容" type="string" attr="required" />
+		</request>
+		<response>
+			<var name="content" desc="聊天内容" type="string" attr="required" />
+			<var name="pos" desc="pos in room" type="int32" attr="optional" />
+		</response>
+	</bean>
+	
+	
+</Protocol>
